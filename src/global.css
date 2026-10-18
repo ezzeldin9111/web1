@@ -119,3 +119,15 @@ body {
 
   --left-0: 0px;
 }
+@media (max-width: 768px) {
+  body, html, #root {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+    width: 100% !important;
+  }
+  
+  img, video, iframe {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+}
