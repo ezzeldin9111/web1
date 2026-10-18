@@ -58,18 +58,18 @@ const HomePage = ({ products }: { products: Product[] }) => {
     <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
       {/* البانر الرئيسي */}
       <section style={{ display: "flex", flexWrap: "wrap", backgroundColor: "#F5F7FA", borderRadius: "24px", overflow: "hidden", margin: "32px 0", alignItems: "center" }}>
-        <div style={{ flex: 1, minWidth: "320px" }}>
+        <div style={{ flex: 1, minWidth: "min(320px, 100%)" }}>
           <img src="/Campaign-photograph@2x.png" alt="عروض رنة تليفون" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         </div>
-        <div style={{ flex: 1, minWidth: "320px", padding: "48px 40px", textAlign: "right" }}>
-          <h1 style={{ fontSize: "40px", color: "#121D31", margin: "16px 0", lineHeight: "1.3" }}>اكتشف عالم التقنية،<br/>بأفضل الأسعار.</h1>
+        <div style={{ flex: 1, minWidth: "min(320px, 100%)", padding: "clamp(24px, 6vw, 48px) clamp(20px, 5vw, 40px)", textAlign: "right" }}>
+          <h1 style={{ fontSize: "clamp(26px, 7vw, 40px)", color: "#121D31", margin: "16px 0", lineHeight: "1.3" }}>اكتشف عالم التقنية،<br/>بأفضل الأسعار.</h1>
           <p style={{ color: "#667085", fontSize: "16px", marginBottom: "32px" }}>موبايلات، ساعات ذكية، وسماعات أصلية بضمان كامل.</p>
           <button onClick={() => openWhatsApp()} style={{ padding: "14px 24px", backgroundColor: "#215CFF", color: "#fff", border: "none", borderRadius: "8px", fontWeight: "bold", cursor: "pointer", fontSize: "16px" }}>اسألنا واتساب</button>
         </div>
       </section>
 
       {/* قسم المنتجات */}
-      <section id="products-section" style={{ backgroundColor: "#F5F7FA", padding: "40px 32px", borderRadius: "24px", marginBottom: "56px" }}>
+      <section id="products-section" style={{ backgroundColor: "#F5F7FA", padding: "clamp(20px, 5vw, 40px) clamp(16px, 4vw, 32px)", borderRadius: "24px", marginBottom: "56px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "24px", flexWrap: "wrap", gap: "16px" }}>
           <h2 style={{ fontSize: "28px", margin: 0, color: "#121D31" }}>المنتجات المتاحة</h2>
           
@@ -99,7 +99,7 @@ const HomePage = ({ products }: { products: Product[] }) => {
         {products.length === 0 ? (
           <div style={{ textAlign: "center", color: "#667085", padding: "40px 0" }}>جاري تحميل المنتجات أو لا توجد منتجات مضافة حالياً.</div>
         ) : (
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: "20px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(260px, 100%), 1fr))", gap: "20px" }}>
             {filteredProducts.map((item) => (
               <div key={item.id} style={{ backgroundColor: "#fff", border: "1px solid #E3E8F0", borderRadius: "16px", padding: "16px", position: "relative", display: "flex", flexDirection: "column" }}>
                 {isDiscountValid(item) && (
@@ -145,16 +145,16 @@ const ProductDetailsPage = ({ products }: { products: Product[] }) => {
         <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>الرئيسية</Link> / {product.category} / <span style={{ color: "#121D31" }}>{product.name}</span>
       </div>
       <div style={{ display: "flex", gap: "48px", flexWrap: "wrap" }}>
-        <div style={{ flex: 1, minWidth: "320px" }}>
+        <div style={{ flex: 1, minWidth: "min(320px, 100%)" }}>
           {isDiscountValid(product) && <span style={{ backgroundColor: "#FEE2E2", color: "#E53935", padding: "6px 12px", borderRadius: "6px", fontSize: "14px", fontWeight: "bold", marginBottom: "12px", display: "inline-block" }}>🔥 تخفيض حصري لفترة محدودة</span>}
-          <h1 style={{ fontSize: "36px", color: "#121D31", margin: "10px 0" }}>{product.name}</h1>
+          <h1 style={{ fontSize: "clamp(24px, 6vw, 36px)", color: "#121D31", margin: "10px 0" }}>{product.name}</h1>
           <div style={{ color: "#215CFF", fontWeight: "bold", marginBottom: "16px" }}>الماركة: {product.brand}</div>
           <p style={{ color: "#667085", fontSize: "16px", lineHeight: "1.6" }}>{product.description}</p>
           <div style={{ padding: "16px", backgroundColor: "#F5F7FA", borderRadius: "8px", margin: "20px 0" }}>
             <h4 style={{ margin: "0 0 8px" }}>المواصفات:</h4>
             <p style={{ margin: 0, color: "#4B5563" }}>{product.specs}</p>
           </div>
-          <div style={{ margin: "24px 0", display: "flex", alignItems: "center", gap: "16px" }}>
+          <div style={{ margin: "24px 0", display: "flex", alignItems: "center", gap: "16px", flexWrap: "wrap" }}>
             {isDiscountValid(product) ? (
               <>
                 <span style={{ fontSize: "36px", fontWeight: "bold", color: "#E53935" }}>{product.discount_price} ج.م</span>
@@ -166,7 +166,7 @@ const ProductDetailsPage = ({ products }: { products: Product[] }) => {
           </div>
           <button onClick={() => window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`السلام عليكم، بخصوص ${product.name}، هل متاح للحجز؟`)}`, "_blank")} style={{ width: "100%", padding: "18px", backgroundColor: "#215CFF", color: "#fff", border: "none", borderRadius: "10px", fontSize: "18px", fontWeight: "bold", cursor: "pointer" }}>احجز عبر واتساب الآن</button>
         </div>
-        <div style={{ flex: 1, minWidth: "320px", backgroundColor: "#F5F7FA", borderRadius: "24px", padding: "32px", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div style={{ flex: 1, minWidth: "min(320px, 100%)", backgroundColor: "#F5F7FA", borderRadius: "24px", padding: "32px", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
           <img src={product.image} alt={product.name} style={{ maxWidth: "100%", maxHeight: "500px", objectFit: "contain", mixBlendMode: "multiply" }} />
         </div>
       </div>
@@ -188,7 +188,7 @@ const AdminLoginPage = ({ onLogin }: { onLogin: (u: string, p: string) => boolea
 
   return (
     <div style={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: "100vh", backgroundColor: "#F5F7FA" }}>
-      <form onSubmit={handleSubmit} style={{ backgroundColor: "#fff", padding: "40px", borderRadius: "16px", boxShadow: "0 4px 12px rgba(0,0,0,0.05)", width: "100%", maxWidth: "400px", textAlign: "center" }}>
+      <form onSubmit={handleSubmit} style={{ backgroundColor: "#fff", padding: "40px", borderRadius: "16px", boxShadow: "0 4px 12px rgba(0,0,0,0.05)", width: "calc(100% - 32px)", maxWidth: "400px", textAlign: "center" }}>
         <h2 style={{ color: "#215CFF", marginBottom: "24px" }}>تسجيل الدخول للإدارة</h2>
         {error && <div style={{ color: "red", marginBottom: "16px", fontSize: "14px" }}>{error}</div>}
         <input type="text" placeholder="اسم المستخدم" value={username} onChange={(e) => setUsername(e.target.value)} style={{ width: "100%", padding: "12px", marginBottom: "16px", borderRadius: "8px", border: "1px solid #E3E8F0", boxSizing: "border-box" }} required />
@@ -200,8 +200,8 @@ const AdminLoginPage = ({ onLogin }: { onLogin: (u: string, p: string) => boolea
 };
 
 const AdminLayout = ({ children, currentUser, onLogout }: { children: React.ReactNode, currentUser: AdminUser, onLogout: () => void }) => (
-  <div style={{ display: "flex", minHeight: "100vh", backgroundColor: "#F5F7FA" }}>
-    <aside style={{ width: "240px", backgroundColor: "#fff", borderLeft: "1px solid #E3E8F0", padding: "24px", display: "flex", flexDirection: "column" }}>
+  <div style={{ display: "flex", flexWrap: "wrap", minHeight: "100vh", backgroundColor: "#F5F7FA" }}>
+    <aside style={{ flex: "0 0 240px", maxWidth: "100%", backgroundColor: "#fff", borderLeft: "1px solid #E3E8F0", padding: "24px", display: "flex", flexDirection: "column", gap: "16px" }}>
       <h2 style={{ color: "#215CFF", margin: "0 0 32px", fontSize: "22px" }}>لوحة تحكم المتجر</h2>
       <nav style={{ display: "flex", flexDirection: "column", gap: "12px", flex: 1 }}>
         <Link to="/admin/products" style={{ color: "#121D31", textDecoration: "none", padding: "10px", fontWeight: "bold" }}>📦 المنتجات</Link>
@@ -213,7 +213,7 @@ const AdminLayout = ({ children, currentUser, onLogout }: { children: React.Reac
       </nav>
       <button onClick={onLogout} style={{ padding: "12px", backgroundColor: "#FEE2E2", color: "red", border: "none", borderRadius: "8px", fontWeight: "bold", cursor: "pointer" }}>تسجيل الخروج</button>
     </aside>
-    <main style={{ flex: 1, padding: "40px", overflowY: "auto" }}>{children}</main>
+    <main style={{ flex: "1 1 320px", minWidth: 0, padding: "clamp(16px, 4vw, 40px)", overflowY: "auto" }}>{children}</main>
   </div>
 );
 
@@ -233,11 +233,11 @@ const AdminProductsPage = ({ products, setProducts }: { products: Product[]; set
 
   return (
     <div>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "28px" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "28px", flexWrap: "wrap", gap: "12px" }}>
         <h1 style={{ fontSize: "28px", color: "#121D31" }}>المنتجات المنشورة ({products.length})</h1>
         <Link to="/admin/product/new" style={{ padding: "12px 20px", backgroundColor: "#215CFF", color: "#fff", textDecoration: "none", borderRadius: "8px", fontWeight: "bold" }}>+ إضافة منتج جديد</Link>
       </div>
-      <div style={{ backgroundColor: "#fff", borderRadius: "16px", border: "1px solid #E3E8F0", overflow: "hidden" }}>
+      <div style={{ backgroundColor: "#fff", borderRadius: "16px", border: "1px solid #E3E8F0", overflowX: "auto" }}>
         <table style={{ width: "100%", textAlign: "right", borderCollapse: "collapse" }}>
           <thead style={{ backgroundColor: "#FAFAFA", borderBottom: "1px solid #E3E8F0" }}>
             <tr><th style={{ padding: "16px" }}>المنتج</th><th>القسم</th><th>السعر</th><th style={{ textAlign: "center" }}>إجراءات</th></tr>
@@ -356,7 +356,7 @@ const AdminAddProductPage = ({ products, setProducts }: { products: Product[]; s
   return (
     <div style={{ maxWidth: "800px" }}>
       <h1 style={{ fontSize: "28px", color: "#121D31", marginBottom: "24px" }}>{isEdit ? "تعديل المنتج" : "إضافة منتج جديد"}</h1>
-      <form onSubmit={handleSubmit} style={{ backgroundColor: "#fff", padding: "32px", borderRadius: "16px", border: "1px solid #E3E8F0", display: "flex", flexDirection: "column", gap: "20px" }}>
+      <form onSubmit={handleSubmit} style={{ backgroundColor: "#fff", padding: "clamp(16px, 4vw, 32px)", borderRadius: "16px", border: "1px solid #E3E8F0", display: "flex", flexDirection: "column", gap: "20px" }}>
         
         <input type="file" accept="image/*" onChange={handleImageUpload} style={{ padding: "12px", border: "1px dashed #215CFF", backgroundColor: "#EDF2FF", borderRadius: "8px", cursor: "pointer" }} />
         {form.image && <img src={form.image} alt="معاينة" style={{ width: "120px", height: "120px", objectFit: "contain", borderRadius: "8px", border: "1px solid #E3E8F0", padding: "4px" }} />}
@@ -444,7 +444,7 @@ const AdminUsersPage = ({ admins, setAdmins, currentUser }: { admins: AdminUser[
         </div>
         <button type="submit" style={{ padding: "12px 24px", backgroundColor: "#215CFF", color: "#fff", border: "none", borderRadius: "8px", fontWeight: "bold", cursor: "pointer" }}>+ إضافة</button>
       </form>
-      <div style={{ backgroundColor: "#fff", borderRadius: "16px", border: "1px solid #E3E8F0", overflow: "hidden" }}>
+      <div style={{ backgroundColor: "#fff", borderRadius: "16px", border: "1px solid #E3E8F0", overflowX: "auto" }}>
         <table style={{ width: "100%", textAlign: "right", borderCollapse: "collapse" }}>
           <thead style={{ backgroundColor: "#FAFAFA", borderBottom: "1px solid #E3E8F0" }}>
             <tr><th style={{ padding: "16px" }}>اسم المستخدم</th><th>الصلاحية</th><th>كلمة المرور</th><th>إجراءات</th></tr>

@@ -28,17 +28,22 @@ const StoreNavigation: FunctionComponent<StoreNavigationType> = ({
         @media (max-width: 768px) {
           .mobile-main-nav {
             flex-direction: column !important;
-            padding: 15px 10px !important;
+            height: auto !important;
+            overflow: visible !important;
+            padding: 15px 16px !important;
             gap: 15px !important;
           }
           .mobile-search {
             max-width: 100% !important;
             width: 100% !important;
+            min-width: 0 !important;
             margin: 0 !important;
           }
           .mobile-cat-nav {
-            padding: 15px 10px !important;
             flex-direction: column !important;
+            height: auto !important;
+            overflow: visible !important;
+            padding: 15px 16px !important;
             gap: 15px !important;
           }
           .mobile-nav-links {

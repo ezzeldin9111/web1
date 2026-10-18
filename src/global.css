@@ -1,5 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600&display=swap");
-
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+html, body {
+  overflow-x: hidden;
+}
+img, video, iframe {
+  max-width: 100%;
+}
 body {
   margin: 0;
   line-height: normal;
@@ -118,16 +126,4 @@ body {
   --lh-40: 40px;
 
   --left-0: 0px;
-}
-@media (max-width: 768px) {
-  body, html, #root {
-    overflow-x: hidden !important;
-    max-width: 100vw !important;
-    width: 100% !important;
-  }
-  
-  img, video, iframe {
-    max-width: 100% !important;
-    height: auto !important;
-  }
 }
