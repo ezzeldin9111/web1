@@ -1,0 +1,49 @@
+.accessoryCategory {
+  flex: 1;
+  border-radius: var(--br-16);
+  background-color: var(--color-whitesmoke);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: var(--padding-24);
+  box-sizing: border-box;
+  gap: var(--gap-20);
+  min-width: var(--min-w-237);
+  max-width: var(--max-w-305);
+  text-align: right;
+  font-size: var(--fs-18);
+  color: var(--color-gray-200);
+  font-family: var(--font-inter);
+}
+.categoryDescription {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gap-4);
+  min-width: var(--min-w-132);
+}
+.label,
+.label2 {
+  align-self: stretch;
+  position: relative;
+  line-height: 150%;
+}
+.label {
+  font-weight: 600;
+}
+.label2 {
+  font-size: var(--fs-12);
+  color: var(--color-slategray);
+}
+.smartphoneIcon {
+  height: var(--height-34);
+  width: var(--width-34);
+  position: relative;
+}
+@media screen and (max-width: 450px) {
+  .accessoryCategory {
+    flex-wrap: wrap;
+  }
+}
